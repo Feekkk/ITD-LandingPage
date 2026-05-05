@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Monitor, Headphones, Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ChevronDown, Headphones, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
   onSupportClick: () => void;
@@ -8,6 +8,8 @@ interface HeaderProps {
 export default function Header({ onSupportClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [systemsOpen, setSystemsOpen] = useState(false);
+  const systemsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -15,10 +17,26 @@ export default function Header({ onSupportClick }: HeaderProps) {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
+  useEffect(() => {
+    if (!systemsOpen) return;
+    const onDocClick = (e: MouseEvent) => {
+      const el = systemsRef.current;
+      if (!el) return;
+      if (e.target instanceof Node && el.contains(e.target)) return;
+      setSystemsOpen(false);
+    };
+    document.addEventListener('mousedown', onDocClick);
+    return () => document.removeEventListener('mousedown', onDocClick);
+  }, [systemsOpen]);
+
   const navLinks = [
-    { label: 'Announcements', href: '#announcements' },
-    { label: 'Systems', href: '#systems' },
+    { label: 'About Us', href: '/about' },
     { label: 'FAQ', href: '#faq' },
+  ];
+
+  const systemLinks = [
+    { label: 'VenuQuip', href: 'https://vequip.rcmp.edu.my' },
+    { label: 'Nexcheck', href: 'https://nims.rcmp.edu.my' },
   ];
 
   return (
@@ -33,18 +51,21 @@ export default function Header({ onSupportClick }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md"
-              style={{ background: '#0f2d5e' }}
-            >
-              <Monitor size={18} className="text-white" />
-            </div>
+            <img
+              src="https://itd.rcmp.edu.my/wp-content/uploads/2025/08/LOGO-UniKL-RCMP-13-2048x349.png"
+              alt="University Kuala Lumpur Royal College of Medicine Perak"
+              className="h-10 sm:h-11 w-auto object-contain shrink-0"
+            />
             <div className="leading-tight">
-              <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#1a56a0' }}>
-                UniKL RCMP
+              <p
+                className={`text-xs font-semibold tracking-widest uppercase ${
+                  scrolled ? 'text-[#1a56a0]' : 'text-white/90'
+                }`}
+              >
+                University Kuala Lumpur Royal College of Medicine Perak
               </p>
-              <p className="text-sm font-bold" style={{ color: '#0f2d5e' }}>
-                IT Department
+              <p className={`text-sm font-bold ${scrolled ? 'text-[#0f2d5e]' : 'text-white'}`}>
+                Information Technology Department
               </p>
             </div>
           </div>
@@ -55,11 +76,49 @@ export default function Header({ onSupportClick }: HeaderProps) {
               <a
                 key={label}
                 href={href}
-                className="text-sm font-medium text-slate-600 hover:text-blue-700 transition-colors"
+                className={`text-sm font-medium transition-colors ${
+                  scrolled ? 'text-slate-600 hover:text-blue-700' : 'text-white/90 hover:text-white'
+                }`}
               >
                 {label}
               </a>
             ))}
+
+            <div className="relative" ref={systemsRef}>
+              <button
+                type="button"
+                onClick={() => setSystemsOpen((v) => !v)}
+                className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                  scrolled ? 'text-slate-600 hover:text-blue-700' : 'text-white/90 hover:text-white'
+                }`}
+                aria-haspopup="menu"
+                aria-expanded={systemsOpen}
+              >
+                Systems
+                <ChevronDown size={16} className={`transition-transform ${systemsOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {systemsOpen && (
+                <div
+                  className="absolute right-0 mt-3 w-56 rounded-2xl border border-slate-200/80 bg-white shadow-lg overflow-hidden"
+                  role="menu"
+                >
+                  {systemLinks.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      role="menuitem"
+                      className="block px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+                      onClick={() => setSystemsOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Support button */}
@@ -73,7 +132,9 @@ export default function Header({ onSupportClick }: HeaderProps) {
               Support
             </button>
             <button
-              className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+              className={`md:hidden p-2 rounded-lg transition-colors ${
+                scrolled ? 'text-slate-600 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+              }`}
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -83,17 +144,45 @@ export default function Header({ onSupportClick }: HeaderProps) {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-200/60 space-y-1">
+          <div
+            className={`md:hidden py-4 border-t space-y-1 ${
+              scrolled ? 'border-slate-200/60' : 'border-white/20'
+            }`}
+          >
             {navLinks.map(({ label, href }) => (
               <a
                 key={label}
                 href={href}
                 onClick={() => setMenuOpen(false)}
-                className="block px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+                className={`block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                  scrolled ? 'text-slate-700 hover:bg-slate-100' : 'text-white/90 hover:bg-white/10'
+                }`}
               >
                 {label}
               </a>
             ))}
+
+            <div className="pt-2">
+              <p className={`px-3 pb-1 text-[11px] font-bold tracking-widest uppercase ${
+                scrolled ? 'text-slate-400' : 'text-white/50'
+              }`}>
+                Systems
+              </p>
+              {systemLinks.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  className={`block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                    scrolled ? 'text-slate-700 hover:bg-slate-100' : 'text-white/90 hover:bg-white/10'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
             <button
               onClick={() => { setMenuOpen(false); onSupportClick(); }}
               className="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white"

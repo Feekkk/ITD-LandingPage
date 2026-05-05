@@ -1,4 +1,4 @@
-import { Monitor, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 
 const links = {
   'Quick Access': [
@@ -30,12 +30,11 @@ export default function Footer() {
           {/* Brand column */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center shadow"
-                style={{ background: '#1a56a0' }}
-              >
-                <Monitor size={19} className="text-white" />
-              </div>
+              <img
+                src="/rcmp-white.png"
+                alt="University Kuala Lumpur Royal College of Medicine Perak"
+                className="h-10 sm:h-11 w-auto object-contain shrink-0"
+              />
               <div>
                 <p className="text-xs font-semibold tracking-widest uppercase text-blue-300">UniKL RCMP</p>
                 <p className="text-sm font-bold text-white">IT Department</p>
@@ -45,9 +44,9 @@ export default function Footer() {
               Empowering the UniKL RCMP community with reliable, secure, and innovative IT solutions.
             </p>
             <div className="space-y-2.5">
-              <a href="mailto:ithelpdesk@unikl.edu.my" className="flex items-center gap-2.5 text-slate-400 hover:text-blue-300 transition-colors text-sm">
+              <a href="mailto:it.rcmp@unikl.edu.my" className="flex items-center gap-2.5 text-slate-400 hover:text-blue-300 transition-colors text-sm">
                 <Mail size={14} />
-                ithelpdesk@unikl.edu.my
+                it.rcmp@unikl.edu.my
               </a>
               <a href="tel:+60321750000" className="flex items-center gap-2.5 text-slate-400 hover:text-blue-300 transition-colors text-sm">
                 <Phone size={14} />
@@ -55,7 +54,7 @@ export default function Footer() {
               </a>
               <span className="flex items-start gap-2.5 text-slate-400 text-sm">
                 <MapPin size={14} className="shrink-0 mt-0.5" />
-                Level 3, Admin Block, UniKL RCMP, Pasir Gudang, Johor
+                No 3, Jalan Greentown, 30450 Ipoh, Perak
               </span>
             </div>
           </div>
@@ -84,7 +83,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-8">
           <p className="text-slate-500 text-xs">
-            &copy; {new Date().getFullYear()} Universiti Kuala Lumpur — Royal College of Medicine Perak. All rights reserved.
+            &copy; {new Date().getFullYear()} Universiti Kuala Lumpur Royal College of Medicine Perak. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             {['Privacy Policy', 'Terms of Use', 'Accessibility'].map((item) => (

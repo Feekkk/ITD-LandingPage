@@ -4,68 +4,85 @@ export default function Hero() {
   return (
     <section
       className="relative overflow-hidden pt-16"
-      style={{ background: 'linear-gradient(135deg, #0f2d5e 0%, #1a56a0 60%, #2a7cc7 100%)' }}
+      style={{
+        background:
+          'radial-gradient(900px 520px at 50% 35%, rgba(126,184,247,0.18), transparent 62%), linear-gradient(180deg, #040a14 0%, #07162f 45%, #050d1c 100%)',
+      }}
     >
-      {/* Decorative blobs */}
+      {/* Decorative layers */}
       <div
-        className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10"
-        style={{ background: 'radial-gradient(circle, #ffffff 0%, transparent 70%)' }}
+        className="absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.35) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+          maskImage: 'radial-gradient(circle at 50% 35%, black 0%, transparent 62%)',
+          WebkitMaskImage: 'radial-gradient(circle at 50% 35%, black 0%, transparent 62%)',
+        }}
       />
       <div
-        className="absolute bottom-0 -left-16 w-64 h-64 rounded-full opacity-10"
-        style={{ background: 'radial-gradient(circle, #7eb8f7 0%, transparent 70%)' }}
+        className="absolute -top-56 left-1/2 -translate-x-1/2 w-[48rem] h-[48rem] rounded-full opacity-20 blur-3xl"
+        style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.42) 0%, transparent 62%)' }}
+      />
+      <div
+        className="absolute -bottom-56 left-1/2 -translate-x-1/2 w-[46rem] h-[46rem] rounded-full opacity-25 blur-3xl"
+        style={{ background: 'radial-gradient(circle, rgba(126,184,247,0.55) 0%, transparent 62%)' }}
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-        <div className="max-w-3xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-8">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-white/90 text-xs font-semibold tracking-wide uppercase">
-              One-Stop IT Center — RCMP Campus
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="font-extrabold tracking-tight leading-[0.95]">
+            <span className="block text-[42px] sm:text-[64px] lg:text-[84px] text-white/30">
+              One Stop Center
             </span>
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
-            Your Gateway to
-            <span className="block" style={{ color: '#7eb8f7' }}>
-              Campus IT Services
+            <span className="block text-[42px] sm:text-[64px] lg:text-[84px]">
+              <span className="text-white/30">for</span>{' '}
+              <span className="text-white">Information Technology</span>{' '}
+              <span className="text-white/30">Dept</span>{' '}
             </span>
           </h1>
 
-          <p className="text-lg text-white/75 leading-relaxed mb-10 max-w-xl">
-            The UniKL RCMP IT Department provides seamless access to all internal systems, technical support, and digital resources — empowering students and staff every day.
+          <p className="mt-6 text-sm sm:text-base text-white/35 max-w-2xl mx-auto leading-relaxed">
+            We provide seamless access to internal systems, announcements, and IT support helping students and staff stay connected across University Kuala Lumpur Royal College of Medicine Perak.
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="mt-10 flex items-center justify-center">
             <a
               href="#systems"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
-              style={{ color: '#0f2d5e' }}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white border border-white/10 transition-all hover:-translate-y-0.5"
+              style={{
+                background: 'linear-gradient(135deg, rgba(26,86,160,0.22) 0%, rgba(15,45,94,0.12) 70%)',
+                boxShadow:
+                  '0 16px 44px rgba(0,0,0,0.55), 0 0 0 1px rgba(126,184,247,0.18) inset, 0 0 38px rgba(126,184,247,0.22)',
+              }}
             >
               Explore Systems
               <ArrowDown size={16} />
-            </a>
-            <a
-              href="#announcements"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/25 rounded-xl font-semibold text-sm text-white hover:bg-white/20 transition-all"
-            >
-              View Announcements
             </a>
           </div>
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-3 gap-4 mt-16 max-w-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mt-14 max-w-4xl mx-auto">
           {[
-            { icon: Cpu, label: 'Internal Systems', value: '12+' },
+            { icon: Cpu, label: 'Internal Systems', value: '4+' },
             { icon: Shield, label: 'Uptime SLA', value: '99.9%' },
-            { icon: Zap, label: 'Avg. Response', value: '< 4 hrs' },
+            { icon: Zap, label: 'Avg. Response', value: '< 8 hours' },
           ].map(({ icon: Icon, label, value }) => (
-            <div key={label} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 text-center">
-              <Icon size={20} className="mx-auto mb-2 text-blue-300" />
-              <p className="text-xl font-extrabold text-white">{value}</p>
-              <p className="text-xs text-white/60 mt-0.5 leading-tight">{label}</p>
+            <div
+              key={label}
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 flex items-center gap-3"
+            >
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-white/10 bg-white/10"
+                style={{ boxShadow: '0 0 26px rgba(126,184,247,0.14)' }}
+              >
+                <Icon size={18} className="text-white/80" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-lg font-extrabold text-white leading-none">{value}</p>
+                <p className="text-xs text-white/60 mt-1 leading-tight">{label}</p>
+              </div>
             </div>
           ))}
         </div>

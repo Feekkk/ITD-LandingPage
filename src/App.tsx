@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Announcements from './components/Announcements';
+import OurServices from './components/OurServices';
+import AboutUs from './pages/AboutUs';
+import SystemShowcase from './pages/SystemShowcase';
+import NotFound from './pages/NotFound';
 import SystemsGrid from './components/SystemsGrid';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
@@ -9,17 +13,27 @@ import Footer from './components/Footer';
 function App() {
   const [supportOpen, setSupportOpen] = useState(false);
 
+  const home = (
+    <main>
+      <Hero />
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+        <OurServices />
+        <SystemsGrid />
+        <FAQ />
+      </section>
+    </main>
+  );
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans">
       <Header onSupportClick={() => setSupportOpen(true)} />
-      <main>
-        <Hero />
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
-          <Announcements />
-          <SystemsGrid />
-          <FAQ />
-        </section>
-      </main>
+      <Routes>
+        <Route path="/" element={home} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/systems" element={<SystemShowcase />} />
+        <Route path="/systems/:slug" element={<SystemShowcase />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Footer />
 
       {supportOpen && (
