@@ -31,7 +31,7 @@ export default function Header({ onSupportClick }: HeaderProps) {
 
   const navLinks = [
     { label: 'About Us', href: '/about' },
-    { label: 'FAQ', href: '#faq' },
+    { label: 'FAQ', href: '/faq' },
   ];
 
   const systemLinks = [

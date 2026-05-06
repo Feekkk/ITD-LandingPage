@@ -2,13 +2,10 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import OurServices from './components/OurServices';
 import AboutUs from './pages/AboutUs';
+import FAQPage from './pages/FAQ';
 import SystemShowcase from './pages/SystemShowcase';
-import Supporting from './pages/Supporting';
-import Network from './pages/Network';
 import NotFound from './pages/NotFound';
-import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
 function App() {
@@ -17,10 +14,6 @@ function App() {
   const home = (
     <main>
       <Hero />
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
-        <OurServices />
-        <FAQ />
-      </section>
     </main>
   );
 
@@ -30,10 +23,9 @@ function App() {
       <Routes>
         <Route path="/" element={home} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/faq" element={<FAQPage />} />
         <Route path="/systems" element={<SystemShowcase />} />
         <Route path="/systems/:slug" element={<SystemShowcase />} />
-        <Route path="/supporting" element={<Supporting />} />
-        <Route path="/network" element={<Network />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
