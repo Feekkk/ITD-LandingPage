@@ -62,10 +62,10 @@ export default function Header({ onSupportClick }: HeaderProps) {
                   scrolled ? 'text-[#1a56a0]' : 'text-white/90'
                 }`}
               >
-                University Kuala Lumpur Royal College of Medicine Perak
+               UniKL RCMP
               </p>
               <p className={`text-sm font-bold ${scrolled ? 'text-[#0f2d5e]' : 'text-white'}`}>
-                Information Technology Department
+                IT Department
               </p>
             </div>
           </div>

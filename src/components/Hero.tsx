@@ -25,7 +25,7 @@ export default function Hero() {
         style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.42) 0%, transparent 62%)' }}
       />
       <div
-        className="absolute -bottom-56 left-1/2 -translate-x-1/2 w-[46rem] h-[46rem] rounded-full opacity-25 blur-3xl"
+        className="absolute -bottom-56 left-1/2 -translate-x-1/2 w-[46rem] h-[46rem] rounded-full opacity-25 blur-3xl"    
         style={{ background: 'radial-gradient(circle, rgba(126,184,247,0.55) 0%, transparent 62%)' }}
       />
 
@@ -36,14 +36,16 @@ export default function Hero() {
               One Stop Center
             </span>
             <span className="block text-[42px] sm:text-[64px] lg:text-[84px]">
-              <span className="text-white/30">for</span>{' '}
-              <span className="text-white">Information Technology</span>{' '}
-              <span className="text-white/30">Dept</span>{' '}
+              {/* <span className="text-white/30">for</span>{' '} */}
+              <span className="inline-block text-white italic animate-hero-it-emphasis">
+                Information Technology
+              </span>{' '}
+              <span className="text-white/30">Department</span>{' '}
             </span>
           </h1>
 
           <p className="mt-6 text-sm sm:text-base text-white/35 max-w-2xl mx-auto leading-relaxed">
-            We provide seamless access to internal systems, announcements, and IT support helping students and staff stay connected across University Kuala Lumpur Royal College of Medicine Perak.
+            We provide seamless access to internal systems and IT support helping students and staff stay connected across University Kuala Lumpur Royal College of Medicine Perak.
           </p>
 
           <div className="mt-10 flex items-center justify-center">

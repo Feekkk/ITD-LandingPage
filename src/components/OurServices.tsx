@@ -1,176 +1,129 @@
+import type { LucideIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import {
-  Headphones,
-  Wifi,
-  Mail,
-  Shield,
   Laptop,
-  Database,
+  Wifi,
+  Info,
   ArrowUpRight,
 } from 'lucide-react';
 
-const services = [
+type ServiceItem = {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  tint: string;
+  video: string;
+  href: string;
+};
+
+const services: ServiceItem[] = [
   {
-    icon: Headphones,
-    title: 'IT Helpdesk & Support',
-    desc: 'Ticketing, troubleshooting, on-site assistance, and follow-ups.',
-    image: 'https://images.unsplash.com/photo-1519241047957-be31d7379a5d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    color: '#0f2d5e',
+    icon: Laptop,
+    title: 'Internal Systems',
+    desc: 'Access to department internal systems and services. All the systems are accessible via the portal and developed by the System Development Team in the IT Department.',
     tint: '#e8f0fb',
+    video: '/coding.mp4',
+    href: '/systems',
+  },
+  {
+    icon: Info,
+    title: 'Supporting Services',
+    desc: 'Maxhub Screen Share, Epson Interactive Projection, and more. All the installations and guidance are provided by the Supporting Services Team in the IT Department.',
+    tint: '#eef5ff',
+    video: '/supporting.mp4',
+    href: '/supporting',
   },
   {
     icon: Wifi,
-    title: 'Network & Wi‑Fi',
-    desc: 'Wi‑Fi access, VPN, connectivity checks, and network guidance.',
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    color: '#1a56a0',
+    title: 'Network & Wi-Fi',
+    desc: 'Wi-Fi access, VPN, connectivity checks, and network guidance. All the network and Wi-Fi related issues are handled by the Network and Wi-Fi Team in the IT Department.',
     tint: '#eef5ff',
+    video: '/network.mp4',
+    href: '/network',
   },
-  {
-    icon: Mail,
-    title: 'Maxhub Screen Share ',
-    desc: 'Maxhub Screen Share is a platform that allows you to share your screen to the internet.',
-    href: 'https://screen.maxhub.com/downloads',
-    image: 'https://scontent.fpen1-2.fna.fbcdn.net/v/t1.6435-9/81329891_141636623946385_5332813900758908928_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=fXsiU-t7NvgQ7kNvwG1XLwJ&_nc_oc=Adri6eOqKZFTWe6R-qRXiohPh-sm853Nr93dk8H6-EjiBZVsl7rnws3FQdAhwUFowsk&_nc_zt=23&_nc_ht=scontent.fpen1-2.fna&_nc_gid=5kPZVZFLcPKECh4G3m8CQA&_nc_ss=7b289&oh=00_Af7H57eUWLIJMRjl9fsekn7ZmzdYgq6kXBZd0rI54WQ-_Q&oe=6A212CF4',
-    color: '#0f2d5e',
-    tint: '#e8f0fb',
-  },
-  {
-    icon: Laptop,
-    title: 'Hardware & Software',
-    desc: 'Device setup, software installs, updates, and basic maintenance.',
-    image: 'https://plus.unsplash.com/premium_photo-1661662850226-83c981ed4eba?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    color: '#1a56a0',
-    tint: '#eef5ff',
-  },
-  {
-    icon: Shield,
-    title: 'Maxhub Connect',
-    desc: 'Maxhub Connect is a platform that allows you to connect your Maxhub devices to the internet.',
-    href: 'https://connect.maxhub.com/downloads',
-    image: 'https://www.audax.my/wp-content/uploads/2025/07/z-2048x1100.png',
-    color: '#0f2d5e',
-    tint: '#e8f0fb',
-  },
-  {
-    icon: Database,
-    title: 'Epson Interactive Projection',
-    desc: 'Epson Interactive Projection is a platform that allows you to connect your Epson interactive projection devices to the internet.',
-    href: 'https://www.epson.com/interactive-projection',
-    image: 'https://lh3.googleusercontent.com/1eNRqZWw3PipILpj32NwILFeBWLJ89EOYS8X6wU7Z_e9t2PiYD8d-dp8ghsFwBqIGKR1bf_tF79Ebsl05_kJD00b=s1280-w1280-h800',
-    color: '#1a56a0',
-    tint: '#eef5ff',
-  },
-] as const;
+];
 
-function ServiceTile({ item }: { item: (typeof services)[number] }) {
+function ServiceTile({ item }: { item: ServiceItem }) {
   const Icon = item.icon;
-  const href = 'href' in item ? item.href : undefined;
-  const image = 'image' in item ? item.image : undefined;
 
-  const Card = (
-    <div className="rounded-2xl border border-slate-200/80 bg-white shadow-sm overflow-hidden transition-all hover:shadow-md hover:-translate-y-0.5">
-      <div className="relative h-28 overflow-hidden">
-        {image ? (
-          <>
-            <img
-              src={image}
-              alt=""
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
-              aria-hidden
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.92) 100%), radial-gradient(520px 220px at 20% 20%, ${item.color}1f, transparent 60%)`,
-              }}
-              aria-hidden
-            />
-          </>
-        ) : (
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `radial-gradient(520px 220px at 20% 20%, ${item.color}1f, transparent 60%), linear-gradient(135deg, ${item.tint} 0%, #ffffff 60%, ${item.tint} 100%)`,
-            }}
-            aria-hidden
-          />
-        )}
-      </div>
-      <div className="p-4">
-        <div className="flex items-start justify-between gap-4">
-          <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-200/70 shadow-sm shrink-0"
-            style={{ background: item.tint }}
-          >
-            <Icon size={18} style={{ color: item.color }} />
-          </div>
-          <ArrowUpRight size={16} className="text-slate-300" />
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm transition-shadow hover:shadow-md flex flex-col gap-5 sm:flex-row sm:gap-6 sm:items-stretch">
+      <div className="relative mx-auto sm:mx-0 w-full max-w-md sm:max-w-none sm:w-[min(100%,340px)] md:w-[380px] shrink-0 aspect-video rounded-xl overflow-hidden bg-slate-900 ring-1 ring-slate-200/80 shadow-inner">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src={item.video}
+          muted
+          playsInline
+          loop
+          autoPlay
+          preload="metadata"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"
+          aria-hidden
+        />
+        <div
+          className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-xl border border-white/25 shadow-md backdrop-blur-[2px]"
+          style={{ backgroundColor: `${item.tint}f2` }}
+        >
+          <Icon className="h-5 w-5 text-slate-900" strokeWidth={1.65} aria-hidden />
         </div>
-        <p className="mt-3 font-semibold text-slate-900 leading-snug">{item.title}</p>
-        <p className="mt-1.5 text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+      </div>
+
+      <div className="flex min-w-0 flex-1 flex-col justify-center text-left">
+        <h3 className="text-lg font-bold tracking-tight text-slate-900 sm:text-xl">{item.title}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-500 sm:text-[15px]">{item.desc}</p>
+        <Link
+          to={item.href}
+          className="mt-5 inline-flex min-h-[40px] items-center justify-center self-start rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0f2d5e]"
+        >
+          Learn more
+        </Link>
       </div>
     </div>
-  );
-
-  return href ? (
-    <a href={href} target="_blank" rel="noreferrer" className="block">
-      {Card}
-    </a>
-  ) : (
-    Card
   );
 }
 
 export default function OurServices() {
   return (
-    <div id="services">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.35fr,1fr] gap-8 lg:gap-12 items-center">
-        <div className="hidden lg:flex flex-col gap-4">
-          <ServiceTile item={services[0]} />
-          <ServiceTile item={services[1]} />
-          <ServiceTile item={services[2]} />
-        </div>
-
-        <div className="text-center lg:text-left">
+    <div id="services" className="w-full">
+      <div className="flex flex-col gap-10 md:gap-12 lg:gap-14">
+        <header className="max-w-3xl mx-auto text-center md:mx-0 md:text-left md:max-w-none">
           <p className="text-xs font-semibold tracking-widest uppercase text-slate-400">
             Our Services
           </p>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-3 text-[1.65rem] sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
             IT services that keep RCMP running
           </h2>
-          <p className="mt-5 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            Information Technology Department provides day-to-day support and core
-            digital services. From network access and email to systems guidance and security. We help
-            students and staff stay productive.
+          <p className="mt-5 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto md:mx-0">
+            Information Technology Department provides day-to-day support and core digital services.
+            From network access and email to systems guidance and security. We help students and
+            staff stay productive.
           </p>
-          <p className="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-           Want to learn more about our department?
+          <p className="mt-4 text-sm sm:text-base text-slate-500 leading-relaxed max-w-2xl mx-auto md:mx-0">
+            Want to learn more about our department?
           </p>
 
-          <div className="mt-7 flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
+          <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 justify-center md:justify-start">
             <a
               href="/about"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white shadow-sm hover:shadow-md transition-shadow"
+              className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-2.5 rounded-xl text-sm font-semibold text-white shadow-sm hover:shadow-md transition-shadow min-h-[44px]"
               style={{ background: '#0f2d5e' }}
             >
               Learn more about our department
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={16} className="shrink-0" />
             </a>
           </div>
-        </div>
+        </header>
 
-        <div className="hidden lg:flex flex-col gap-4">
-          <ServiceTile item={services[3]} />
-          <ServiceTile item={services[4]} />
-          <ServiceTile item={services[5]} />
-        </div>
-      </div>
-
-      <div className="lg:hidden mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {services.map((item) => (
-          <ServiceTile key={item.title} item={item} />
-        ))}
+        <ul className="list-none p-0 m-0 flex flex-col gap-4 sm:gap-5 max-w-4xl mx-auto md:mx-0 md:max-w-none w-full">
+          {services.map((item) => (
+            <li key={item.title} className="w-full">
+              <ServiceTile item={item} />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

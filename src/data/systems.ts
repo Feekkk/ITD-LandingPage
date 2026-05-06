@@ -1,4 +1,4 @@
-import { BookOpen, GraduationCap, Shield, Wifi, type LucideIcon } from 'lucide-react';
+import { BookOpen, GraduationCap, Shield, type LucideIcon } from 'lucide-react';
 
 export type SystemAction =
   | { label: 'Launch'; type: 'launch'; href?: string }
@@ -13,6 +13,7 @@ export type InternalSystem = {
   color: string;
   accent: string;
   image?: string;
+  previewVideo?: string;
   action: SystemAction;
   highlights: { label: string; value: string }[];
   features: string[];
@@ -29,6 +30,7 @@ export const systems: readonly InternalSystem[] = [
     color: '#0f2d5e',
     accent: '#e8f0fb',
     image: '/venuquip.png',
+    previewVideo: '/vequip.mp4',
     action: { label: 'Launch', type: 'launch', href: 'https://vequip.rcmp.edu.my' },
     highlights: [
       { label: 'Core use', value: 'Bookings' },
@@ -51,6 +53,7 @@ export const systems: readonly InternalSystem[] = [
     color: '#1a56a0',
     accent: '#eef5ff',
     image: '/nexcheck.png',
+    previewVideo: '/nexcheck.mp4',
     action: { label: 'Launch', type: 'launch', href: 'https://nims.rcmp.edu.my' },
     highlights: [
       { label: 'Core use', value: 'Inventory' },
@@ -66,7 +69,7 @@ export const systems: readonly InternalSystem[] = [
   {
     slug: 'helpdesk',
     icon: Shield,
-    title: 'IT Helpdesk',
+    title: 'Helpdesk Portal (Coming Soon)',
     description: 'Submit and track IT support tickets seamlessly.',
     longDescription:
       'The IT Helpdesk is the primary channel to report issues, request assistance, and follow up on service status with clear tracking and updates.',
@@ -79,23 +82,6 @@ export const systems: readonly InternalSystem[] = [
       { label: 'Status', value: 'Coming soon' },
     ],
     features: ['Submit tickets', 'Track progress', 'Get updates and guidance'],
-  },
-  {
-    slug: 'network-portal',
-    icon: Wifi,
-    title: 'Network Portal',
-    description: 'Wi‑Fi registration, VPN access, and network diagnostics.',
-    longDescription:
-      'Network Portal provides guidance and entry points for Wi‑Fi onboarding, VPN access, and basic troubleshooting to keep connectivity consistent across campus.',
-    color: '#1a56a0',
-    accent: '#eef5ff',
-    action: { label: 'Launch', type: 'launch' },
-    highlights: [
-      { label: 'Core use', value: 'Connectivity' },
-      { label: 'Audience', value: 'Campus-wide' },
-      { label: 'Status', value: 'Coming soon' },
-    ],
-    features: ['Wi‑Fi onboarding', 'VPN access', 'Diagnostics guidance'],
   },
 ] as const;
 
