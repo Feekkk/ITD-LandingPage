@@ -106,14 +106,14 @@ export default function OurServices() {
           </p>
 
           <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 justify-center md:justify-start">
-            <a
-              href="/about"
+            <Link
+              to="/about"
               className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-2.5 rounded-xl text-sm font-semibold text-white shadow-sm hover:shadow-md transition-shadow min-h-[44px]"
               style={{ background: '#0f2d5e' }}
             >
               Learn more about our department
               <ArrowUpRight size={16} className="shrink-0" />
-            </a>
+            </Link>
           </div>
         </header>
 
