@@ -65,7 +65,7 @@ export default function Header({ onSupportClick }: HeaderProps) {
                UniKL RCMP
               </p>
               <p className={`text-sm font-bold ${scrolled ? 'text-[#0f2d5e]' : 'text-white'}`}>
-                IT Department
+               IT Dept
               </p>
             </div>
           </div>

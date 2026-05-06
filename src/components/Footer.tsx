@@ -2,22 +2,15 @@ import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 
 const links = {
   'Quick Access': [
-    { label: 'Student Portal', href: '#' },
-    { label: 'Staff Portal', href: '#' },
-    { label: 'IT Helpdesk', href: '#' },
-    { label: 'Network Portal', href: '#' },
-  ],
-  'IT Services': [
-    { label: 'Submit a Ticket', href: '#' },
-    { label: 'System Status', href: '#' },
-    { label: 'Software Requests', href: '#' },
-    { label: 'IT Policies', href: '#' },
+    { label: 'Nexcheck', href: 'https://nims.rcmp.edu.my' },
+    { label: 'VenuQuip', href: 'https://vequip.rcmp.edu.my' },
+    { label: 'Helpdesk Portal', href: '#' },
   ],
   'University': [
-    { label: 'UniKL Official Site', href: '#' },
-    { label: 'RCMP Campus Info', href: '#' },
-    { label: 'Academic Calendar', href: '#' },
-    { label: 'Campus Map', href: '#' },
+    { label: 'UniKL RCMP Official Site', href: 'https://rcmp.unikl.edu.my' },
+    { label: 'RCMP Campus Info', href: 'https://rcmp.unikl.edu.my/campus-info' },
+    { label: 'Academic Calendar', href: 'https://rcmp.unikl.edu.my/academic-calendar' },
+    { label: 'Campus Map', href: 'https://share.google.com/vhtrgVRToPpvQfXLM' },
   ],
 };
 
@@ -83,15 +76,8 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-8">
           <p className="text-slate-500 text-xs">
-            &copy; {new Date().getFullYear()} Universiti Kuala Lumpur Royal College of Medicine Perak. All rights reserved.
+            &copy; {new Date().getFullYear()} UniKL RCMP. All rights reserved.
           </p>
-          <div className="flex items-center gap-5">
-            {['Privacy Policy', 'Terms of Use', 'Accessibility'].map((item) => (
-              <a key={item} href="#" className="text-slate-500 hover:text-slate-300 text-xs transition-colors">
-                {item}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
