@@ -8,31 +8,27 @@ const faqs = [
   },
   {
     q: 'How do I connect to the campus Wi-Fi network?',
-    a: 'Select \"UniKL-RCMP\" from your device\'s Wi-Fi list. First-time users must register their device via the Network Portal using their student or staff ID. Detailed instructions are available on the Network Portal documentation page.',
+    a: 'Select \"RCMP_WIFI\" from your device\'s Wi-Fi list. Refer to the Helpdesk Portal for any issues.',
   },
   {
     q: 'What is the process for submitting an IT support ticket?',
-    a: 'Log in to the IT Helpdesk portal and click \"New Ticket.\" Select the appropriate category, provide a clear description of the issue, and attach any relevant screenshots. You will receive an acknowledgment email with a ticket reference number. Our team targets a response within 4 business hours.',
+    a: 'Log in to the IT Helpdesk portal and click \"New Ticket.\" Select the appropriate category, provide a clear description of the issue, and attach any relevant screenshots. You will receive an acknowledgment email with a ticket reference number. Our team targets a response within 8 business hours.',
   },
   {
     q: 'How do I access Microsoft 365 (Office, Teams, OneDrive)?',
-    a: 'Navigate to the Webmail (M365) system listed above and sign in with your institutional credentials (studentID@student.unikl.edu.my or staffID@unikl.edu.my). All enrolled students and active staff are entitled to the full Microsoft 365 suite at no charge.',
+    a: 'Navigate to the Webmail (M365) system listed above and sign in with your institutional credentials (studentID@s.unikl.edu.my or staffID@unikl.edu.my). All enrolled students and active staff are entitled to the full Microsoft 365 suite at no charge.',
   },
   {
     q: 'Can I install software on campus lab computers?',
     a: "Lab computers are managed by the IT Department and do not permit user-level software installation. If your course requires specific software, submit a request through the IT Helpdesk with your lecturer's endorsement and we will evaluate the deployment.",
   },
   {
-    q: 'What should I do if I suspect a phishing or suspicious email?',
-    a: 'Do not click any links or download attachments. Forward the email as an attachment to itsecurity@unikl.edu.my and then delete it from your inbox. The IT Security team will investigate and notify users if broader action is needed.',
-  },
-  {
     q: 'How do I book a computer lab or smart classroom?',
-    a: 'Use the Room Booking system listed in the Internal Systems section. Select your preferred date, time, and room, then submit your request. Approval notifications are sent to your institutional email within one business day.',
+    a: 'Use the VenuQuip system listed in the Internal Systems section. Select your preferred date, time, and room, then submit your request. Approval notifications are sent to your institutional email within one business day.',
   },
   {
     q: "What are the IT Department's office hours?",
-    a: 'Our walk-in helpdesk operates Monday to Friday, 8:00 AM – 5:00 PM (closed on public holidays). For urgent after-hours issues, submit a ticket marked \"High Priority\" and our on-call team will respond within 2 hours.',
+    a: 'Our walk-in helpdesk operates Monday to Friday, 8:00 AM – 5:00 PM (closed on public holidays) at the IT Department Office, Level 1, Avicenna Building. For urgent after-hours issues, submit a ticket marked \"High Priority\" and our on-call team will respond within 2 hours.',
   },
 ] as const;
 

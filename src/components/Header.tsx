@@ -37,6 +37,7 @@ export default function Header({ onSupportClick }: HeaderProps) {
   const systemLinks = [
     { label: 'VenuQuip', href: 'https://vequip.rcmp.edu.my' },
     { label: 'Nexcheck', href: 'https://nims.rcmp.edu.my' },
+    { label: 'Helpdesk', href: 'http://helpdesk.rcmp.unikl.edu.my' },
   ];
 
   return (
@@ -149,6 +150,11 @@ export default function Header({ onSupportClick }: HeaderProps) {
               scrolled ? 'border-slate-200/60' : 'border-white/20'
             }`}
           >
+              <p className={`px-3 pb-1 text-[11px] font-bold tracking-widest uppercase ${
+                scrolled ? 'text-slate-400' : 'text-white/50'
+              }`}>
+                Quick Access
+              </p>
             {navLinks.map(({ label, href }) => (
               <a
                 key={label}
@@ -166,7 +172,7 @@ export default function Header({ onSupportClick }: HeaderProps) {
               <p className={`px-3 pb-1 text-[11px] font-bold tracking-widest uppercase ${
                 scrolled ? 'text-slate-400' : 'text-white/50'
               }`}>
-                Systems
+                Internal Systems
               </p>
               {systemLinks.map((item) => (
                 <a

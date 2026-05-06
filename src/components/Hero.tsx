@@ -118,11 +118,9 @@ export default function Hero() {
           <div className="mt-10 flex items-center justify-center">
             <a
               href="https://helpdesk.rcmp.unikl.edu.my/"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white border border-white/10 transition-all hover:-translate-y-0.5 min-h-[44px]"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white border border-white/10 min-h-[44px] animate-hero-ticket-cta motion-reduce:animate-none hover:brightness-110 active:brightness-95 transition-[filter]"
               style={{
                 background: 'linear-gradient(135deg, rgba(26,86,160,0.22) 0%, rgba(15,45,94,0.12) 70%)',
-                boxShadow:
-                  '0 16px 44px rgba(0,0,0,0.55), 0 0 0 1px rgba(126,184,247,0.18) inset, 0 0 38px rgba(126,184,247,0.22)',
               }}
             >
               Submit a Ticket
@@ -153,9 +151,9 @@ export default function Hero() {
                 </div>
               </summary>
               <div className="mt-2 grid grid-cols-1 gap-2">
-                <RowButton label="VLE" href="#" />
-                <RowButton label="Student portal" href="#" />
-                <RowButton label="Microsoft Office" href="#" />
+                <RowButton label="VLE" href="https://vle.unikl.edu.my/" />
+                <RowButton label="Student portal" href="https://cas.unikl.edu.my/" />
+                <RowButton label="Microsoft Office" href="https://office.com/" />
               </div>
             </details>
           </HubCard>

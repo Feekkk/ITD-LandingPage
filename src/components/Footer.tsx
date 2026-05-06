@@ -29,12 +29,12 @@ export default function Footer() {
                 className="h-10 sm:h-11 w-auto object-contain shrink-0"
               />
               <div>
-                <p className="text-xs font-semibold tracking-widest uppercase text-blue-300">UniKL RCMP</p>
+                <p className="text-xs font-semibold tracking-widest uppercase text-white">UniKL RCMP</p>
                 <p className="text-sm font-bold text-white">IT Department</p>
               </div>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              Empowering the UniKL RCMP community with reliable, secure, and innovative IT solutions.
+              Empowering the UniKL RCMP community with reliable, secure, and innovative IT supports services.
             </p>
             <div className="space-y-2.5">
               <a href="mailto:it.rcmp@unikl.edu.my" className="flex items-center gap-2.5 text-slate-400 hover:text-blue-300 transition-colors text-sm">
